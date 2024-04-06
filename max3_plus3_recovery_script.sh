@@ -12,6 +12,9 @@ if [[ "$printer" -eq 1 ]] ; then
     rm printer-max3_probe.cfg
   elif [[ "$probe" -eq 2 ]] ; then
     rm printer-max3_bltouch.cfg
+  else
+    echo "ERROR: invalid response"
+    exit 0
   fi
   read -p 'do you want to update your printer.cfg file? (y/n) ' cfg
   echo "###############################################################################
@@ -32,11 +35,12 @@ sudo mv 800_480.tft /root/" > recovery_script.sh
 sudo dpkg -i mksclient-max3.deb
 sudo mv 800_480.tft /root/" > recovery_script.sh
     scp recovery_script.sh *.deb *.tft mks@"$ip_address":/home/mks
+  else
+    echo "ERROR: invalid response"
+    exit 0
   fi
   ssh mks@"$ip_address" "cd /home/mks ; chmod +x recovery_script.sh ; /bin/bash recovery_script.sh"
-fi
-
-if [[ "$printer" -eq 2 ]] ; then
+elif [[ "$printer" -eq 2 ]] ; then
   rm *-max3*
   read -p 'do you want to update your printer.cfg file? (y/n) ' cfg
   echo "###############################################################################
@@ -57,8 +61,14 @@ sudo mv 800_480.tft /root/" > recovery_script.sh
 sudo dpkg -i mksclient-plus3.deb
 sudo mv 800_480.tft /root/" > recovery_script.sh
     scp recovery_script.sh *.deb *.tft mks@"$ip_address"
+  else
+    echo "ERROR: invalid response"
+    exit 0
   fi
   ssh mks@"$ip_address" "cd /home/mks ; chmod +x recovery_script.sh ; /bin/bash recovery_script.sh"
+else
+  echo "ERROR: invalid response"
+  exit 0
 fi
 
 echo 'the mksclient has been installed, and the mksrecovery file has been moved to your root directory'
