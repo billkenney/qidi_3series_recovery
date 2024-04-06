@@ -6,12 +6,12 @@ read -p "what is your printer's ip address? " ip_address
 read -p 'is your printer the (1) max 3 or (2) the plus 3? ' printer
 
 if [[ "$printer" -eq 1 ]] ; then
-  rm *-plus3*
+  if [ -f *-plus3* ] ; then rm *-plus3* ; fi
   read -p 'does your printer have the (1) bltouch (which has orange on the side) or the (2) probe? ' probe
   if [[ "$probe" -eq 1 ]] ; then
-    rm printer-max3_probe.cfg
+    if [ -f printer-max3_probe.cfg ] ; then rm printer-max3_probe.cfg ; fi
   elif [[ "$probe" -eq 2 ]] ; then
-    rm printer-max3_bltouch.cfg
+    if [ -f printer-max3_bltouch.cfg ] ; then rm printer-max3_bltouch.cfg ; fi
   else
     echo "ERROR: invalid response"
     exit 0
@@ -30,7 +30,7 @@ sudo dpkg -i mksclient-max3.deb
 sudo mv 800_480.tft /root/" > recovery_script.sh
     scp recovery_script.sh *.cfg *.deb *.tft mks@"$ip_address":/home/mks
   elif [[ "$cfg" =~ [nN] ]] ; then
-    rm *.cfg
+    if [ -f *.cfg ] ; then rm *.cfg ; fi
     echo "#!/bin/bash
 sudo dpkg -i mksclient-max3.deb
 sudo mv 800_480.tft /root/" > recovery_script.sh
@@ -41,7 +41,7 @@ sudo mv 800_480.tft /root/" > recovery_script.sh
   fi
   ssh mks@"$ip_address" "cd /home/mks ; chmod +x recovery_script.sh ; /bin/bash recovery_script.sh"
 elif [[ "$printer" -eq 2 ]] ; then
-  rm *-max3*
+  if [ -f *-max3* ] ; then rm *-max3* ; fi
   read -p 'do you want to update your printer.cfg file? (y/n) ' cfg
   echo "###############################################################################
 please enter the password 'makerbase' if prompted (there should be two prompts)
@@ -56,7 +56,7 @@ sudo dpkg -i mksclient-plus3.deb
 sudo mv 800_480.tft /root/" > recovery_script.sh
     scp recovery_script.sh *.cfg *.deb *.tft mks@"$ip_address":/home/mks
  elif [[ "$cfg" =~ [nN] ]] ; then
-    rm *.cfg
+    if [ -f *.cfg ] ; then rm *.cfg ; fi
     echo "#!/bin/bash
 sudo dpkg -i mksclient-plus3.deb
 sudo mv 800_480.tft /root/" > recovery_script.sh
