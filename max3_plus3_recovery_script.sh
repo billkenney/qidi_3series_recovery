@@ -14,7 +14,9 @@ if [[ "$printer" -eq 1 ]] ; then
     rm printer-max3_bltouch.cfg
   fi
   read -p 'do you want to update your printer.cfg file? (y/n) ' cfg
-  echo "please enter the password 'makerbase' when prompted (there will be two prompts)"
+  echo "###############################################################################
+please enter the password 'makerbase' if prompted (there should be two prompts)
+###############################################################################"
   if [[ "$cfg" =~ [yY] ]] ; then
     echo "#!/bin/bash
 if [ -f /home/mks/klipper_config/printer.cfg ] ; then
@@ -37,7 +39,9 @@ fi
 if [[ "$printer" -eq 2 ]] ; then
   rm *-max3*
   read -p 'do you want to update your printer.cfg file? (y/n) ' cfg
-  echo "please enter the password 'makerbase' when prompted (there will be two prompts)"
+  echo "###############################################################################
+please enter the password 'makerbase' if prompted (there should be two prompts)
+###############################################################################"
   if [[ "$cfg" =~ [yY] ]] ; then
     echo "#!/bin/bash
 if [ -f /home/mks/klipper_config/printer.cfg ] ; then
