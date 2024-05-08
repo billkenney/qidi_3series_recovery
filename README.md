@@ -10,5 +10,5 @@ For instance, if your printer is the Max 3 with the BLTouch probe and you want t
 2. "scp 800_480.tft mksclient-max3.deb printer-max3_bltouch.cfg mks@printer.ip.address:/home/mks" (or copy these files to a flash drive)
 3. ssh into your printer: "ssh mks@printer.ip.address"
 4. if you scp'd the files to your home directory: "mv /home/mks/klipper_config/printer.cfg /home/mks/klipper_config/printer.cfg.bak ; mv printer-max3_bltouch.cfg /home/mks/klipper_config/printer.cfg ; sudo dpkg -i mksclient-max3.deb ; sudo mv 800_480.tft /root/"
-5. if you copied the files onto a flash drive: "cd /home/mks/gcode_files/sda1 ; mv /home/mks/klipper_config/printer.cfg /home/mks/klipper_config/printer.cfg.bak ; mv printer-max3_bltouch.cfg /home/mks/klipper_config/printer.cfg ; sudo dpkg -i mksclient-max3.deb ; sudo mv 800_480.tft /root/"
+5. if you copied the files onto a flash drive: "mv /home/mks/klipper_config/printer.cfg /home/mks/klipper_config/printer.cfg.bak ; mv /home/mks/gcode_files/sda1/printer-max3_bltouch.cfg /home/mks/klipper_config/printer.cfg ; sudo dpkg -i /home/mks/gcode_files/sda1/mksclient-max3.deb ; sudo mv /home/mks/gcode_files/sda1/800_480.tft /root/"
 6. turn your printer off, wait for a bit, turn it back on, and the firmware update will take place. 
