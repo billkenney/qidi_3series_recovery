@@ -16,3 +16,6 @@ ssh into your printer and run: `cd ~ ; wget --no-check-certificate https://raw.g
 
 # for the smart3
 ssh into your printer and run: `cd ~ ; wget --no-check-certificate https://raw.githubusercontent.com/billkenney/qidi_3series_recovery/main/smart3_recovery.sh ; chmod +x smart3_recovery.sh ; ./smart3_recovery.sh`
+
+# if the printer or screen are not working properly after reinstalling the firmware, revert to qidi's klipper/moonraker, or write a recovery image to the emmc
+follow the steps outlined here to reinstall klipper/moonraker from qidi's github repository: https://github.com/billkenney/revert_qidi_software/blob/main/readme.md
