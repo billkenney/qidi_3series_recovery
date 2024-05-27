@@ -19,3 +19,5 @@ else
   echo "ERROR: invalid response"
   exit 0
 fi
+
+echo "the printer firmware updates have been installed. turn your printer off, wait for 15 seconds, and turn it back on. there should be a white screen with a progress indicator. once that's complete, reboot your printer again and you should be good to go"
