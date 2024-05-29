@@ -19,3 +19,7 @@ ssh into your printer and run: `cd ~ ; wget --no-check-certificate https://raw.g
 
 # if the printer or screen are not working properly after reinstalling the firmware, revert to qidi's klipper/moonraker, or write a recovery image to the emmc
 follow the steps outlined here to reinstall klipper/moonraker from qidi's github repository: https://github.com/billkenney/revert_qidi_software/blob/main/readme.md
+
+# write the xindi recovery image to your existing emmc without an adapter
+
+someone posted that you can write the xindi image to a flash drive, plug it into the motherboard, and it will boot from the flash drive instead of the emmc. if you are able to do this, you can write the xindi image to your emmc without an adapter. first copy the xindi image file to a second flash drive and plug that into your printer, ssh into the printer, and check the path to the second flash drive with `sudo lsblk`, mount it, and write the image to your emmc module. first check that '/dev/mmcblk0' or '/dev/mmcblk1' is in the list of hard drives, this is your emmc. the second flash drive will probably be '/dev/sdb1', in which case you run `sudo umount /dev/sdb1 ; sudo mount /dev/sdb1 /mnt`. check to make sure the xindi image is there: `ls /mnt`, this should return 'xindi-20230309.img'. if the image is there, run `sudo dd if=/mnt/xindi-20230309.img of=/dev/mmcblk0 bs=32M status=progress`. replace '/dev/mmcblk0' with the path to your emmc
