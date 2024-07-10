@@ -1,10 +1,14 @@
 #!/bin/bash
 cd /home/mks
 sudo sed -i 's/deb.debian.org\/debian buster-backports/archive.debian.org\/debian buster-backports/g' /etc/apt/sources.list
-wget --no-check-certificate https://raw.githubusercontent.com/billkenney/qidi_3series_recovery/main/800_480.tft
 wget --no-check-certificate https://raw.githubusercontent.com/billkenney/qidi_3series_recovery/main/mksclient-plus3.deb
 sudo mv ~/klipper_config/MKS_THR.cfg ~/klipper_config/MKS_THR.cfg.bak ; path=$(ls /dev/serial/by-id/*) ; printf "[mcu MKS_THR]\nserial:$path\n" > ~/klipper_config/MKS_THR.cfg
-sudo dpkg -i mksclient-plus3.deb ; rm mksclient-plus3.deb ; sudo mv 800_480.tft /root/800_480.tft
+sudo dpkg -i mksclient-plus3.deb ; rm mksclient-plus3.deb
+read -p 'do you want to update your screen firmware (unnecessary if its already on the latest firmware, this update takes like 30 min)? (y/n): ' sfmw
+if [[ "$sfmw" =~ [yY] ]] ; then
+  wget --no-check-certificate https://raw.githubusercontent.com/billkenney/qidi_3series_recovery/main/800_480.tft
+  sudo mv 800_480.tft /root/800_480.tft
+fi
 read -p 'do you want to update your printer.cfg file? (y/n): ' pcfg
 if [[ "$pcfg" =~ [yY] ]] ; then
   wget --no-check-certificate https://raw.githubusercontent.com/billkenney/qidi_3series_recovery/main/printer-plus3.cfg
