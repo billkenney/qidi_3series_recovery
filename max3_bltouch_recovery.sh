@@ -16,4 +16,4 @@ if [[ "$pcfg" =~ [yY] ]] ; then
   echo "your old printer.cfg has been saved to ~/klipper_config/printer.cfg.bak"
 fi
 
-echo "the printer firmware updates have been installed. turn your printer off, wait for 15 seconds, and turn it back on. there should be a white screen with a progress indicator. it could take a few minutes for the update to begin, so don't be impatient. once that's complete, reboot your printer again and you should be good to go"
+echo "the printer firmware updates have been installed. turn your printer off, wait for 15 seconds, and turn it back on. if you've chosen to install the screen firmware, there should be a white screen with a progress indicator. it could take a few minutes for the update to begin, so don't be impatient. once that's complete, reboot your printer again and you should be good to go"
