@@ -15,5 +15,6 @@ if [[ "$pcfg" =~ [yY] ]] ; then
   mv ~/klipper_config/printer.cfg ~/klipper_config/printer.cfg.bak ; mv printer-max3_bltouch.cfg ~/klipper_config/printer.cfg
   echo "your old printer.cfg has been saved to ~/klipper_config/printer.cfg.bak"
 fi
+sudo chown -R mks:mks /home/mks/klipp* /home/mks/moonraker* /home/mks/fluidd
 
 echo "the printer firmware updates have been installed. turn your printer off, wait for 15 seconds, and turn it back on. if you've chosen to install the screen firmware, there should be a white screen with a progress indicator. it could take a few minutes for the update to begin, so don't be impatient. once that's complete, reboot your printer again and you should be good to go"
