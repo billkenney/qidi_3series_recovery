@@ -5,8 +5,7 @@ using a terminal client such as putty for windows, Terminal on macos or linux, o
 
 if you get an ssl error when trying to download the script, you need to make sure your date and time is correct. ssh into your printer and run `date`. if the date is incorrect, find your time zone here: https://en.m.wikipedia.org/wiki/List_of_tz_database_time_zones (it should be in the format America/Chicago), then run `sudo timedatectl set-timezone [your_timezone] ; sudo timedatectl set-ntp 1` replacing [your_timezone] with your actual timezone. run `date` again and make sure its correct. if its not, follow the steps here to fix it before proceeding: https://wiki.qidi3d.com/en/Memo/System-Time-Modification
 
-# if files in the klipper_config folder are missing or corrupt, or you just want to revert to the stock config, install the klipper_config folder from the xindi image
-# note that you have to run the recovery script and replace the printer.cfg file for your printer after replacing the klipper_config folder
+# if files in the klipper_config folder are missing or corrupt, or you just want to revert to the stock config, you can reinstall the klipper_config files from the xindi image. note that you have to run the recovery script and replace the printer.cfg file after replacing the klipper_config folder
 ssh into your printer and run: `cd ~ ; tar -czf klipper_config.bak klipper_config ; rm -rf klipper_config ; wget --no-check-certificate https://raw.githubusercontent.com/billkenney/qidi_3series_recovery/main/klipper_config.tgz ; tar -xzf klipper_config.tgz ; rm klipper_config.tgz`
 
 # for the max3 with the bltouch
