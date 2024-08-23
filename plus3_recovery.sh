@@ -1,9 +1,9 @@
 #!/bin/bash
 cd /home/mks
 sudo sed -i 's/deb.debian.org\/debian buster-backports/archive.debian.org\/debian buster-backports/g' /etc/apt/sources.list
-wget --no-check-certificate https://raw.githubusercontent.com/billkenney/qidi_3series_recovery/main/mksclient-max3.deb
+wget --no-check-certificate https://raw.githubusercontent.com/billkenney/qidi_3series_recovery/main/mksclient-plus3.deb
 sudo mv ~/klipper_config/MKS_THR.cfg ~/klipper_config/MKS_THR.cfg.bak ; path=$(ls /dev/serial/by-id/*) ; printf "[mcu MKS_THR]\nserial:$path\n" > ~/klipper_config/MKS_THR.cfg
-sudo dpkg -i mksclient-max3.deb ; rm mksclient-max3.deb
+sudo dpkg -i mksclient-plus3.deb ; rm mksclient-plus3.deb
 read -p 'do you want to restore the stock klipper_config folder? (y/n): ' kfg
 if [[ "$kfg" =~ [yY] ]] ; then
   tar -czf klipper_config.bak.tgz klipper_config ; rm -rf klipper_config
