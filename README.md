@@ -1,9 +1,15 @@
 # qidi_3series_recovery
 this is a manual install script for qidi max3/plus3/smart3 firmware 4.3.15/4.2.15/4.1.13 for people with the error message that "the system starts abnormally!", a blank screen, you're unable to update the firmware for some reason, or you want an easier way to update the firmware and printer.cfg. all of these files are from qidi's github repository. the only change i made was to comment out the line "systemctl disable gpio-monitor.service" in the DEBIAN/postinst script of the mksclient, because that service did not exist on my printer and it caused the firmware update to fail
 
-using a terminal client such as putty for windows, Terminal on macos or linux, or an app like shelly or terminus on your phone, ssh into your printer: `ssh mks@printer.ip.address` replacing 'printer.ip.address' with your printers ip address. the username is 'mks' and the password is 'makerbase' (for ssh and sudo) any time you are prompted for a password (unless you changed it)
+using a terminal client such as putty for windows, terminal on macos or linux, or an app like shelly or terminus on your phone, ssh into your printer
 
-if you get an ssl error when trying to download the script, you need to make sure your date and time is correct. ssh into your printer and run `date`. if the date is incorrect, find your time zone here: https://en.m.wikipedia.org/wiki/List_of_tz_database_time_zones (it should be in the format America/Chicago), then run `sudo timedatectl set-timezone [your_timezone] ; sudo timedatectl set-ntp 1` replacing [your_timezone] with your actual timezone. run `date` again and make sure its correct. if its not, follow the steps here to fix it before proceeding: https://wiki.qidi3d.com/en/Memo/System-Time-Modification
+the first 2.5 min of this video shows you how to use putty to connect if you're on windows: https://m.youtube.com/watch?v=KQVQOq0Tpgo
+
+if you have mac you can use the terminal app. just type in ssh mks@192.168.1.xxx and press enter (replace '192.168.1.xxx' with your printers ip address)
+
+the username is 'mks' and the password is 'makerbase' any time you are prompted for a password (unless you changed it)
+
+if you get an ssl certificate error downloading the script, or if you have to reinstall klipper/moonraker, you need to make sure your date and time is correct. ssh into your printer and run `date`. if the date is incorrect, find your time zone here: https://en.m.wikipedia.org/wiki/List_of_tz_database_time_zones (it should be in the format America/Chicago), then run `sudo timedatectl set-timezone [your_timezone] ; sudo timedatectl set-ntp 1` replacing [your_timezone] with your actual timezone. run `date` again and make sure its correct. if its not, follow the steps here to fix it before proceeding: https://wiki.qidi3d.com/en/Memo/System-Time-Modification
 
 the script has also been updated to give you the option to replace the klipper_config folder with the stock folder from Qidi's xindi image. if you choose this option, your current klipper_config folder will be backed up to klipper_config.bak.tgz. if you want to restore this backup, ssh into your printer and run `cd ~ ; rm -rf klipper_config ; tar -xzf klipper_config.bak.tgz`
 
