@@ -1,7 +1,7 @@
 # qidi_3series_recovery
 this is a manual install script for qidi max3/plus3/smart3 firmware 4.3.15/4.2.15/4.1.13 for people with the error message that "the system starts abnormally!", a blank screen, you're unable to update the firmware for some reason, or you want an easier way to update the firmware and printer.cfg. all of these files are from qidi's github repository. the only change i made was to comment out the line "systemctl disable gpio-monitor.service" in the DEBIAN/postinst script of the mksclient, because that service did not exist on my printer and it caused the firmware update to fail
 
-using a terminal client such as putty for windows, terminal on macos or linux, or an app like shelly or terminus on your phone, ssh into your printer
+using a terminal client such as putty for windows, terminal on macos or linux, or an app like shelly or terminus on your phone, ssh into your printer. the printer should show up as mkspi in your router if you need to locate the ip address
 
 the first 2.5 min of this video shows you how to use putty to connect if you're on windows: https://m.youtube.com/watch?v=KQVQOq0Tpgo
 
